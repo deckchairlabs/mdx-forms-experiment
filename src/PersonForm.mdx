@@ -13,6 +13,7 @@ export const validationSchema = Yup.object({
 <Grid columns={[1, 2]} gap={4}>
   <Field name="givenName" label="Given name" />
   <Field name="familyName" label="Family name" />
+  <Field name="email" type="email" label="Email address" />
   <Field type="select" name="gender" label="Gender" defaultValue="">
     <option value="" disabled hidden>
       Please choose

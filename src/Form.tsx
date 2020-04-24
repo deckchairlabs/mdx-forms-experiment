@@ -1,5 +1,11 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { useForm, FormContext } from 'react-hook-form'
+
+const encode = (data: Record<string, any>) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 export const Form: FunctionComponent<{
   defaultValues?: any
@@ -9,6 +15,11 @@ export const Form: FunctionComponent<{
 
   const onSubmit = (data: Record<string, any>) => {
     console.log(data)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'person', ...data }),
+    })
   }
 
   return (
