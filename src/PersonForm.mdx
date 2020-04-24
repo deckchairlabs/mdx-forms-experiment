@@ -1,0 +1,28 @@
+import * as Yup from 'yup'
+
+export const defaultValues = {
+  givenName: 'James',
+}
+
+export const validationSchema = Yup.object({
+  givenName: Yup.string().required(),
+  familyName: Yup.string().required(),
+  gender: Yup.string().required(),
+})
+
+<Grid columns={[1, 2]} gap={4}>
+  <Field name="givenName" label="Given name" />
+  <Field name="familyName" label="Family name" />
+  <Field type="select" name="gender" label="Gender" defaultValue="">
+    <option value="" disabled hidden>
+      Please choose
+    </option>
+    <option>Male</option>
+    <option>Female</option>
+  </Field>
+  <Field type="textarea" name="biography" label="Biography" rows={10} />
+</Grid>
+
+<Box padding={2}>
+  <Button type="submit">Submit</Button>
+</Box>
